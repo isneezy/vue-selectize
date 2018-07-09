@@ -1,28 +1,22 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app" style="max-width: 920px; margin: 0 auto">
+    <v-selectize :options="ex1Options" multiple/>
   </div>
 </template>
 
 <script>
+import 'selectize/dist/css/selectize.css'
 import HelloWorld from './components/HelloWorld.vue'
+import VSelectize from './components/VSelectize'
 
 export default {
   name: 'app',
+  data: () => ({
+    ex1Options: ['awesome', 'neat']
+  }),
   components: {
+    VSelectize,
     HelloWorld
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>

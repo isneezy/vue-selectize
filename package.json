@@ -4,11 +4,15 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build:demo": "vue-cli-service build",
+    "build:lib": "vue-cli-service build --target lib --name vue-selectize-component",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "vue": "^2.5.16"
+    "fuse.js": "^3.2.1",
+    "lodash.difference": "^4.5.0",
+    "vue": "^2.5.16",
+    "vue-click-outside": "^1.0.7"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.0-beta.15",
@@ -17,6 +21,9 @@
     "@vue/eslint-config-standard": "^3.0.0-rc.3",
     "lint-staged": "^6.0.0",
     "vue-template-compiler": "^2.5.16"
+  },
+  "peerDependencies": {
+    "selectize": "^0.12.5"
   },
   "browserslist": [
     "> 1%",
