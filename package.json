@@ -1,11 +1,11 @@
 {
-  "name": "vue-selectize-component",
+  "name": "@isneezy/vue-selectize",
   "version": "0.1.0",
-  "private": false,
+  "main": "./dist/vue-selectize.common.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build:demo": "vue-cli-service build",
-    "build:lib": "vue-cli-service build --target lib --name vue-selectize-component",
+    "build:lib": "vue-cli-service build --target lib --name vue-selectize ./src/components/VSelectize.vue",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -29,18 +29,5 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ],
-  "gitHooks": {
-    "pre-commit": "lint-staged"
-  },
-  "lint-staged": {
-    "*.js": [
-      "vue-cli-service lint",
-      "git add"
-    ],
-    "*.vue": [
-      "vue-cli-service lint",
-      "git add"
-    ]
-  }
+  ]
 }
