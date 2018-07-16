@@ -85,7 +85,7 @@ export default {
      */
     createItem: {
       default: function (text) {
-        return text
+        return Promise.resolve(text)
       },
       type: [Function, Boolean]
     },
@@ -384,10 +384,22 @@ export default {
      * Select an active option
      */
     selectActiveOption () {
-      if (this.activeOption) this.selectOption(this.activeOption)
+        this.busy = true
+        if (this.activeOption) this.selectOption(this.activeOption)
       else if (typeof this.createItem === 'function' && this.searchText.length) {
-        const option = this.formatOption(this.createItem(this.searchText))
-        this.selectOption(option)
+        const option = this.createItem(this.searchText)
+        if('then' in option && 'catch' in option){
+            option.then((o) => {
+                this.selectOption(this.formatOption(o))
+                this.busy = false
+            }).catch(e => {
+                this.busy = false
+                return Promise.reject(e)
+            })
+        } else {
+            this.selectOption(this.formatOption(option))
+            this.busy = false
+        }
       }
     },
 
