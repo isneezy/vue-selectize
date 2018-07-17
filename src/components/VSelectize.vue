@@ -41,6 +41,7 @@
 import Fuse from 'fuse.js'
 import ClickOutside from 'vue-click-outside'
 import ArrayDiference from 'lodash.difference'
+import {isPromise} from './utils.js'
 export default {
   name: 'v-selectize',
   props: {
@@ -384,21 +385,21 @@ export default {
      * Select an active option
      */
     selectActiveOption () {
-        this.busy = true
-        if (this.activeOption) this.selectOption(this.activeOption)
+      this.setBusy()
+      if (this.activeOption) this.selectOption(this.activeOption)
       else if (typeof this.createItem === 'function' && this.searchText.length) {
         const option = this.createItem(this.searchText)
-        if('then' in option && 'catch' in option){
-            option.then((o) => {
-                this.selectOption(this.formatOption(o))
-                this.busy = false
-            }).catch(e => {
-                this.busy = false
-                return Promise.reject(e)
-            })
+        if(isPromise(option))
+          option.then((o) => {
+              this.selectOption(this.formatOption(o))
+              this.setNotBusy()
+          }).catch(e => {
+              this.setNotBusy()
+              return Promise.reject(e)
+          })
         } else {
-            this.selectOption(this.formatOption(option))
-            this.busy = false
+          this.selectOption(this.formatOption(option))
+          this.setNotBusy()
         }
       }
     },
@@ -449,9 +450,15 @@ export default {
     },
 
     onAjaxStart () {
-      this.busy = true
+      this.setBusy()
     },
     onAjaxDone () {
+      this.setNotBusy()
+    },
+    setBusy(){
+      this.busy = true
+    },
+    setNotBusy(){
       this.busy = false
     }
   },
