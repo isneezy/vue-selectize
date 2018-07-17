@@ -389,13 +389,13 @@ export default {
       if (this.activeOption) this.selectOption(this.activeOption)
       else if (typeof this.createItem === 'function' && this.searchText.length) {
         const option = this.createItem(this.searchText)
-        if(isPromise(option))
+        if (isPromise(option)) {
           option.then((o) => {
-              this.selectOption(this.formatOption(o))
-              this.setNotBusy()
+            this.selectOption(this.formatOption(o))
+            this.setNotBusy()
           }).catch(e => {
-              this.setNotBusy()
-              return Promise.reject(e)
+            this.setNotBusy()
+            return Promise.reject(e)
           })
         } else {
           this.selectOption(this.formatOption(option))
@@ -455,10 +455,10 @@ export default {
     onAjaxDone () {
       this.setNotBusy()
     },
-    setBusy(){
+    setBusy () {
       this.busy = true
     },
-    setNotBusy(){
+    setNotBusy () {
       this.busy = false
     }
   },
