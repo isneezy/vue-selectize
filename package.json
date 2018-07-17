@@ -1,6 +1,6 @@
 {
   "name": "@isneezy/vue-selectize",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "main": "./dist/vue-selectize.common.js",
   "scripts": {
     "serve": "vue-cli-service serve",

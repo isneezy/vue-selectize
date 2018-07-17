@@ -389,7 +389,7 @@ export default {
       if (this.activeOption) this.selectOption(this.activeOption)
       else if (typeof this.createItem === 'function' && this.searchText.length) {
         const option = this.createItem(this.searchText)
-        if(isPromise(option))
+        if(isPromise(option)) {
           option.then((o) => {
               this.selectOption(this.formatOption(o))
               this.setNotBusy()
