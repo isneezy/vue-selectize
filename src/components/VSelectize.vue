@@ -5,7 +5,7 @@
              class="selectize-input items"
              @click="onFocus" @keydown.tab="onBlur">
 
-            <div :key="item[keyBy]" v-for="item in selectedItems" class="item">
+            <div :key="item[keyBy]" v-for="item in selectedItems" class="item" :data-value="item[keyBy]">
                 <slot name="item" v-bind:item="item">{{ item[label] }}</slot>
             </div>
 
@@ -18,10 +18,11 @@
         <div class="selectize-dropdown" :class="dropdownClassName" :style="dropdownStyle">
             <div class="selectize-dropdown-content">
                 <div v-on:mouseover="activateOption(option)"
+                     data-selectable
                      :key="option[keyBy]" v-for="option in filteredOptions"
                      class="option"
                      :class="getOptionClassName(option)"
-                     :data-selectable="option[keyBy]"
+                     :data-value="option[keyBy]"
                      @click="selectOption(option)">
                     <slot name="option" v-bind:option="option">{{ option[label] }}</slot>
                 </div>
