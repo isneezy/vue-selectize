@@ -15,7 +15,7 @@
                    @keyup.up="activatePrevious" @keyup.down="activateNext"
                    @keyup.delete="popOption" @keyup.enter="selectActiveOption"/>
         </div>
-        <div ref="dropdown" class="selectize-dropdown" :class="dropdownClassName" :style="dropdownStyle">
+        <div class="selectize-dropdown" :class="dropdownClassName" :style="dropdownStyle">
             <div class="selectize-dropdown-content">
                 <div v-on:mouseover="activateOption(option)"
                      :key="option[keyBy]" v-for="option in filteredOptions"
@@ -27,7 +27,7 @@
                 </div>
 
                 <div v-if="!filteredOptions.length && searchText.length && typeof createItem === 'function'"
-                     class="create active"
+                     class="option create active"
                      @click="selectActiveOption"
                      data-selectable>
                     <slot name="create-item" v-bind:text="searchText">Add <strong>{{ searchText }}</strong></slot>
@@ -42,7 +42,6 @@ import Fuse from 'fuse.js'
 import ClickOutside from 'vue-click-outside'
 import ArrayDiference from 'lodash.difference'
 import {isPromise} from './utils.js'
-// import Popper from 'pop'
 export default {
   name: 'v-selectize',
   props: {
@@ -112,7 +111,6 @@ export default {
   mounted () {
     this.setSelectedValue(this.value)
     this.updateInputWidth()
-    // this.popper = new Po
   },
 
   computed: {

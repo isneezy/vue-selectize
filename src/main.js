@@ -1,3 +1,4 @@
+import 'selectize/dist/css/selectize.default.css'
 import Vue from 'vue'
 import App from './App.vue'
 
