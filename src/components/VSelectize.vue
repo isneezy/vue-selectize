@@ -1,5 +1,5 @@
 <template>
-    <div class="selectize-control form-control" tabindex="0" :class="controlClassName"
+    <div class="selectize-control" tabindex="0" :class="controlClassName"
          v-on:focus="onFocus" v-click-outside="onBlur">
         <div :class="inputClassName"
              class="selectize-input items"
@@ -15,7 +15,7 @@
                    @keyup.up="activatePrevious" @keyup.down="activateNext"
                    @keyup.delete="popOption" @keyup.enter="selectActiveOption"/>
         </div>
-        <div class="selectize-dropdown form-control" :class="dropdownClassName" :style="dropdownStyle">
+        <div class="selectize-dropdown" :class="dropdownClassName" :style="dropdownStyle">
             <div class="selectize-dropdown-content">
                 <div v-on:mouseover="activateOption(option)"
                      :key="option[keyBy]" v-for="option in filteredOptions"
@@ -91,7 +91,12 @@ export default {
       type: [Function, Boolean]
     },
 
-    searchFn: {default: false, type: [Boolean, Function]}
+    searchFn: {default: false, type: [Boolean, Function]},
+
+    /**
+     * Selectize theme
+     */
+    theme: {default: '', type: String}
   },
 
   data: () => ({
@@ -190,6 +195,7 @@ export default {
      */
     controlClassName () {
       const className = {}
+      className[this.theme] = true
       className['multi'] = this.multiple
       className['single'] = !this.multiple
       className['loading'] = this.busy
@@ -207,7 +213,7 @@ export default {
       className['dropdown-active'] = this.hasFocus
       className['not-full'] = !this.isFull
       className['has-options'] = this.hasOptions
-      className['has-items'] = this.selected.length
+      className['has-items'] = !!this.selected.length
       return className
     },
 
@@ -231,6 +237,7 @@ export default {
      */
     dropdownClassName () {
       const className = {}
+      className[this.theme] = true
       className['multi'] = this.multiple
       className['single'] = !this.multiple
       return className
@@ -389,13 +396,13 @@ export default {
       if (this.activeOption) this.selectOption(this.activeOption)
       else if (typeof this.createItem === 'function' && this.searchText.length) {
         const option = this.createItem(this.searchText)
-        if(isPromise(option)) {
+        if (isPromise(option)) {
           option.then((o) => {
-              this.selectOption(this.formatOption(o))
-              this.setNotBusy()
+            this.selectOption(this.formatOption(o))
+            this.setNotBusy()
           }).catch(e => {
-              this.setNotBusy()
-              return Promise.reject(e)
+            this.setNotBusy()
+            return Promise.reject(e)
           })
         } else {
           this.selectOption(this.formatOption(option))
@@ -455,10 +462,10 @@ export default {
     onAjaxDone () {
       this.setNotBusy()
     },
-    setBusy(){
+    setBusy () {
       this.busy = true
     },
-    setNotBusy(){
+    setNotBusy () {
       this.busy = false
     }
   },
