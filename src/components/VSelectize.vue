@@ -401,6 +401,7 @@ export default {
         if (isPromise(option)) {
           option.then((o) => {
             this.selectOption(this.formatOption(o))
+            this.searchText = ''
             this.setNotBusy()
           }).catch(e => {
             this.setNotBusy()
@@ -408,6 +409,7 @@ export default {
           })
         } else {
           this.selectOption(this.formatOption(option))
+          this.searchText = ''
           this.setNotBusy()
         }
       }
