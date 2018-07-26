@@ -289,6 +289,7 @@ export default {
         return
       }
       this.searchText = e.target.value
+      this.$emit('search', this.searchText)
       if (typeof this.searchFn === 'function') {
         this.onAjaxStart()
         this.searchFn(this.searchText, this.onAjaxDone)

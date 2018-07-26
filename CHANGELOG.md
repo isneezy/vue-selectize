@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Added
+- `search` event [#9](https://github.com/isneezy/vue-selectize/issues/9)
 ### Removed
 ### Fixed
 ### Changed
