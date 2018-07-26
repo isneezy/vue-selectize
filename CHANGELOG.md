@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - disabled property control to input and prop
 - `search` event [#9](https://github.com/isneezy/vue-selectize/issues/9)
+- `disableSearch` prop
 ### Removed
 ### Fixed
 - `searchText` input after adding item
