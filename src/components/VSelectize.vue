@@ -87,6 +87,11 @@ export default {
     disabled: {default: false, type: Boolean},
 
     /**
+     * Allows disable the built in search engine
+     */
+    disableSearch: {default: false, type: Boolean},
+
+    /**
      * Function to be called when user creates new option
      * Set to false to disable new option creation
      */
@@ -158,7 +163,7 @@ export default {
         minMatchCharLength: 1,
         keys: this.keys
       })
-      return this.searchText.length ? fuse.search(this.searchText) : this.formattedOptions
+      return this.searchText.length && !this.disableSearch ? fuse.search(this.searchText) : this.formattedOptions
     },
 
     /**
@@ -269,7 +274,7 @@ export default {
      * Action performed when component is focused
      */
     onFocus () {
-      if(!this.disabled){
+      if (!this.disabled) {
         this.hasFocus = !this.disabled
         this.$refs.input.focus()
       }
