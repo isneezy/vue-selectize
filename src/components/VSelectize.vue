@@ -9,7 +9,7 @@
                 <slot name="item" v-bind:item="item">{{ item[label] }}</slot>
             </div>
 
-            <input @input="onSearch" ref="input" :value="searchText"
+            <input @input="onSearch" ref="input" :value="searchText" :disabled="disabled"
                    :placeholder="computedPlaceholder" autocomplete="off" tabindex="-1"
                    :style="inputStyle"
                    @keyup.up="activatePrevious" @keyup.down="activateNext"
@@ -80,6 +80,11 @@ export default {
      * The value of the component
      */
     value: {default: null, type: [Array, Object, String, Number]},
+
+    /**
+     * Allows input to be disabled and hides dropdown options
+     */
+    disabled: {default: false, type: Boolean},
 
     /**
      * Function to be called when user creates new option
@@ -264,8 +269,10 @@ export default {
      * Action performed when component is focused
      */
     onFocus () {
-      this.hasFocus = true
-      this.$refs.input.focus()
+      if(!this.disabled){
+        this.hasFocus = !this.disabled
+        this.$refs.input.focus()
+      }
     },
 
     /**
@@ -402,6 +409,7 @@ export default {
         if (isPromise(option)) {
           option.then((o) => {
             this.selectOption(this.formatOption(o))
+            this.searchText = ''
             this.setNotBusy()
           }).catch(e => {
             this.setNotBusy()
@@ -409,6 +417,7 @@ export default {
           })
         } else {
           this.selectOption(this.formatOption(option))
+          this.searchText = ''
           this.setNotBusy()
         }
       }
