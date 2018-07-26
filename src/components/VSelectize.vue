@@ -269,8 +269,10 @@ export default {
      * Action performed when component is focused
      */
     onFocus () {
-      this.hasFocus = !this.disabled
-      this.$refs.input.focus()
+      if(!this.disabled){
+        this.hasFocus = !this.disabled
+        this.$refs.input.focus()
+      }
     },
 
     /**
