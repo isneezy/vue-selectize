@@ -1,7 +1,17 @@
 {
   "name": "@isneezy/vue-selectize",
   "version": "0.2.1",
+  "description": "Vanila Vue.js component that mimics Selectize behaviour (no need jquery dependency) with extras"
+  "keywords": ["Vue", "Selectize", "Select", "Dropdown", "Autocomplete", "Type Ahead", "vue-selectize"],
+  "homepage": "https://github.com/isneezy/vue-selectize",
+  "bugs": {"url": "https://github.com/isneezy/vue-selectize/issues"},
+  "license": "MIT",
+  "author": "Ivan Vilanculo <vilanculoivan@gmail.com> (https://ivan.vilanculo.me)"
   "main": "./dist/vue-selectize.common.js",
+  "repository": {
+    "type" : "git"
+  , "url" : "https://github.com/isneezy/vue-selectize.git"
+  }
   "scripts": {
     "serve": "vue-cli-service serve",
     "build:demo": "vue-cli-service build",
