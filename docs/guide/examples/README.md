@@ -10,9 +10,13 @@ title: Examples
 
 ## Email Contacts
 
+<email-contacts/>
+
 This demonstrates two main things:
 1. custom item and option rendering
 2. item creation on-the-fly. Try typing a valid and invalid email address.
+
+<<< @/docs/.vuepress/components/EmailContacts.vue
 
 ## Single Item Select
 
