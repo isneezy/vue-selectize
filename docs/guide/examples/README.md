@@ -25,20 +25,19 @@ The most vanilla of examples.
 
 <<< @/docs/.vuepress/components/SingleItemSelect.vue
 
-## Option Groups 
-Todo
-
-## Max Items
-Todo
-
 ## Country Selector
 <country-selector/>
-A good example of 
+A good example of:
 1. support for international characters (diacritics) and
 2. how items are scored and sorted. Try typing "islands", for instance.
 
+<<< @/docs/.vuepress/components/CountrySelector.vue
+
 ## Remote Source — Github
+<remote-git-hub/>
 This example shows how to integrate third-party data from the GitHub API.
+
+<<< @/docs/.vuepress/components/RemoteGitHub.vue
 
 ## Remote Source — Rotten Tomatoes
 This demo shows how to integrate third-party
