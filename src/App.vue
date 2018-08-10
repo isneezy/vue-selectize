@@ -8,6 +8,7 @@
 <script>
 import HelloWorld from './components/HelloWorld.vue'
 import VSelectize from './components/VSelectize'
+import '/selectize/dist/css/selectize.default.css'
 
 export default {
   name: 'app',
