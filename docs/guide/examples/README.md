@@ -20,15 +20,22 @@ This demonstrates two main things:
 
 ## Single Item Select
 
+<single-item-select/>
+The most vanilla of examples. 
+
+<<< @/docs/.vuepress/components/SingleItemSelect.vue
+
 ## Option Groups 
 Todo
 
 ## Max Items
+Todo
 
 ## Country Selector
-A good example of (1) support for international characters (diacritics)
-and (2) how items are scored and sorted. Try typing "islands",
-for instance.
+<country-selector/>
+A good example of 
+1. support for international characters (diacritics) and
+2. how items are scored and sorted. Try typing "islands", for instance.
 
 ## Remote Source — Github
 This example shows how to integrate third-party data from the GitHub API.
