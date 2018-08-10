@@ -1,5 +1,6 @@
 # vue-selectize
 A Vanila Vue.js component that mimics the selectize behaviour
+https://ivan.vilanculo.me/vue-selectize
 
 ## Installation
 `yarn add selectize @isneezy/vue-selectize`
