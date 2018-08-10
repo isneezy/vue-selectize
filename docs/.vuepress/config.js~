@@ -10,8 +10,6 @@ module.exports = {
     repo: 'isneezy/vue-selectize',
     editLinks: true,
     docsDir: 'docs',
-    docsBranch: 'docs',
-    editLinkText: 'Help us improve this page!',
     nav: [
       {text: 'Home', link: '/'},
       {text: 'Guide', link: '/guide/'},
