@@ -82,6 +82,11 @@ export default {
     value: {default: null, type: [Array, Object, String, Number]},
 
     /**
+     * The limit/max of options to show in dropdown
+     */
+    limit: {default: 0, type: [Number]},
+
+    /**
      * Allows input to be disabled and hides dropdown options
      */
     disabled: {default: false, type: Boolean},
@@ -163,7 +168,8 @@ export default {
         minMatchCharLength: 1,
         keys: this.keys
       })
-      return this.searchText.length && !this.disableSearch ? fuse.search(this.searchText) : this.formattedOptions
+      const options =  this.searchText.length && !this.disableSearch ? fuse.search(this.searchText) : this.formattedOptions
+      return this.limit > 0 ? options.slice(0, this.limit) : options
     },
 
     /**
