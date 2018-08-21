@@ -33,6 +33,12 @@ A good example of:
 
 <<< @/docs/.vuepress/components/CountrySelector.vue
 
+## Limit Dropdown option
+<limit-dropdown-options/>
+This demo limits the dropdown to have only 10 contries listed.
+
+<<< @/docs/.vuepress/components/LimitDropdownOptions.vue
+
 ## Remote Source — Github
 <remote-git-hub/>
 This example shows how to integrate third-party data from the GitHub API.
