@@ -5,6 +5,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [unreleased]
+### Added
+- `limit` prop [#14](https://github.com/isneezy/vue-selectize/issues/9)
+- ability to limit dropdown options
+### Fixed
+- `inputWidth` for input when typing text
 
 ## [0.3.0] - 2018-07-26
 ### Added
