@@ -337,7 +337,7 @@ export default {
         this.$el.appendChild(this.canvas)
       }
       // noinspection JSValidateTypes
-      this.canvas.innerText = (this.placeholder || this.searchText)
+      this.canvas.innerText = (this.searchText || this.placeholder)
       this.inputWidth = this.canvas.clientWidth + 4
       if (this.$el) {
         this.$el.removeChild(this.canvas)
