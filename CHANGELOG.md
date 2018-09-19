@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [unreleased]
+## [0.4.0]
 ### Added
 - add ability to limit dropdown options using `limit` property [#14](https://github.com/isneezy/vue-selectize/issues/9)
 ### Fixed
@@ -16,7 +16,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - disabled property control to input and prop
 - `search` event [#9](https://github.com/isneezy/vue-selectize/issues/9)
 - ability to disable built in search engine (disable search)
-### Removed
 ### Fixed
 - `searchText` input after adding item
 ### Changed

@@ -1,6 +1,6 @@
 {
   "name": "@isneezy/vue-selectize",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Vanila Vue.js component that mimics Selectize behaviour (no need jquery dependency) with extras",
   "keywords": [
     "Vue",
@@ -11,7 +11,7 @@
     "Type Ahead",
     "vue-selectize"
   ],
-  "homepage": "https://github.com/isneezy/vue-selectize",
+  "homepage": "https://ivan.vilanculo.me/vue-selectize",
   "bugs": {
     "url": "https://github.com/isneezy/vue-selectize/issues"
   },
