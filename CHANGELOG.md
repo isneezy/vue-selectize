@@ -7,7 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [unreleased]
 ### Added
 - add ability to limit dropdown options using `limit` property [#14](https://github.com/isneezy/vue-selectize/issues/9)
-### Fixed- long phrases were get truncated or hidden behind
+### Fixed
+- long phrases were get truncated or hidden behind
+- searchText remains after select an option #19
 
 ## [0.3.0] - 2018-07-26
 ### Added

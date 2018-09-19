@@ -406,6 +406,7 @@ export default {
       } else {
         this.selected = [value]
       }
+      this.searchText = ''
       this.emitInput()
     },
 
