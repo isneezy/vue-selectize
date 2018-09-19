@@ -23,10 +23,8 @@
     "url": "https://github.com/isneezy/vue-selectize.git"
   },
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build:demo": "vue-cli-service build",
+    "serve": "vuepress dev docs",
     "build:lib": "vue-cli-service build --target lib --name vue-selectize ./src/components/VSelectize.vue",
-    "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
     "lint": "vue-cli-service lint"
   },
