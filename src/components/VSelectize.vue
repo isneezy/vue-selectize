@@ -168,7 +168,7 @@ export default {
         minMatchCharLength: 1,
         keys: this.keys
       })
-      const options =  this.searchText.length && !this.disableSearch ? fuse.search(this.searchText) : this.formattedOptions
+      const options = this.searchText.length && !this.disableSearch ? fuse.search(this.searchText) : this.formattedOptions
       return this.limit > 0 ? options.slice(0, this.limit) : options
     },
 

@@ -1,6 +1,6 @@
 {
   "name": "@isneezy/vue-selectize",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Vanila Vue.js component that mimics Selectize behaviour (no need jquery dependency) with extras",
   "keywords": [
     "Vue",
