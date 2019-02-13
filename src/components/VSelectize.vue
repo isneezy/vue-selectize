@@ -342,9 +342,13 @@ export default {
       if (this.$el) {
         this.$el.appendChild(this.canvas)
       }
-      // noinspection JSValidateTypes
-      this.canvas.innerText = (this.searchText || this.placeholder)
+
+      this.canvas.innerText = this.selected.length
+        ? this.searchText
+        : this.placeholder
+
       this.inputWidth = this.canvas.clientWidth + 4
+
       if (this.$el) {
         this.$el.removeChild(this.canvas)
       }
@@ -408,6 +412,7 @@ export default {
       }
       this.searchText = ''
       this.emitInput()
+      this.updateInputWidth()
     },
 
     /**
