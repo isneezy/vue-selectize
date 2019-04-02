@@ -35,6 +35,11 @@
                 </div>
             </div>
         </div>
+        <div class="spinner">
+          <slot name="spinner">
+            <span class="spinner_bg"></span>
+          </slot>
+        </div>
     </div>
 </template>
 
@@ -512,5 +517,29 @@ export default {
 </script>
 
 <style scoped>
+.spinner {
+    transition: opacity 0.2s;
+    z-index: 2;
+    position: absolute;
+    top: 50%;
+    right: 34px;
+    width: 16px;
+    height: 16px;
+    margin: -8px 0 0 0;
+    opacity: 0;
+}
+
+.spinner .spinner_bg {
+    background: url(../assets/images/spinner.gif);
+    background-size: 16px 16px;
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+}
+.loading .spinner {
+  opacity: 1;
+}
 
 </style>

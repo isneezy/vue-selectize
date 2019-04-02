@@ -1,7 +1,7 @@
 <template>
     <div>
         <div>Tags:</div>
-        <v-selectize :searchFn="search" :create-item="false" :options="options" v-model="selected" disableSearch>
+        <v-selectize label="name" :searchFn="search" :create-item="false" :options="options" v-model="selected" disableSearch>
             <template slot="item" slot-scope="{item}">{{item.username}}</template>
         </v-selectize>
         <div>Current Value: {{ selected }}</div>
