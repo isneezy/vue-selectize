@@ -2,7 +2,7 @@ const path = require('path')
 module.exports = {
   title: 'Vue Selectize',
   description: ' Vanila Vue.js component that mimics Selectize behaviour (no need jquery dependency)',
-  base: '/vue-selectize/',
+  // base: '/vue-selectize/',
   ga: 'UA-105706124-2',
   head: [
     ['link', { rel: 'stylesheet', type: 'text/css', href: 'https://cdn.jsdelivr.net/npm/selectize@0.12.6/dist/css/selectize.default.css' }]

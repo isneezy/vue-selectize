@@ -26,7 +26,9 @@
     "serve": "vuepress dev docs",
     "build:lib": "vue-cli-service build --target lib --name vue-selectize ./src/components/VSelectize.vue",
     "docs:build": "vuepress build docs",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "preversion": "yarn build:lib && git add . && node version",
+    "postversion": "git push --tags && yarn publish . --tag $npm_package_version && git push && echo \"Successfully released version $npm_package_version!\""
   },
   "dependencies": {
     "fuse.js": "^3.2.1",
