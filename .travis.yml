@@ -1,0 +1,20 @@
+language: node_js
+sudo: false
+
+install:
+  - yarn install
+
+build:
+  - yarn docs:build
+  - yarn build:lib
+
+deploy:
+  provider: npm
+  skip_cleanup: true
+
+notification:
+  email:
+    recepients:
+      - vilanculoivan@gmail.com
+    on_success: change
+    on_failure: always
