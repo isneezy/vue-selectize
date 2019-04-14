@@ -29,7 +29,7 @@
     "lint": "vue-cli-service lint",
     "preversion": "yarn build:lib",
     "version": "node version && git add .",
-    "postversion": "git push --tags && yarn publish . --tag $npm_package_version && git push && echo \"Successfully released version $npm_package_version!\""
+    "postversion": "git push --tags && npm publish && git push && echo \"Successfully released version $npm_package_version!\""
   },
   "dependencies": {
     "fuse.js": "^3.2.1",
