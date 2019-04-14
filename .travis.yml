@@ -2,11 +2,9 @@ language: node_js
 node_js:
   - 10
 sudo: false
+cache: yarn
 
-install:
-  - yarn install
-
-build:
+script:
   - yarn docs:build
   - yarn build:lib
 
