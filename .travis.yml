@@ -1,20 +1,23 @@
 language: node_js
 node_js:
-  - 10
+- 10
 sudo: false
 cache: yarn
-
 script:
-  - yarn docs:build
-  - yarn build:lib
-
+- yarn docs:build
+- yarn build:lib
 deploy:
-  provider: npm
   skip_cleanup: true
-
+  provider: npm
+  email: vilanculoivan@gmail.com
+  api_key:
+    secure: TqtPy3E8Eq37P2BIrPFu8rhmDwKueIKF/AsbX7Cd0sGHAEdVAKU8ZIwjC4acQ8EHz6Th4PQl9wFHgbVkyA4Xz7NOd1eC3NKZPoiHBX6qxlnYZ2JSkLW+F6Cou7b3Bk+WJWeXrGU9Ogx9JU1pg+xS0ZseVFSXsT48ZXzYYzp2yHmpDE0lyxIq6Yo1mkdSaUZqbR5CYgh1ZqG0bY0SsM3C0VFMy/NAfI0FF6LEnGW08Nc+UkLlPiLA5FocQoqOv+FgRZmRAZ6nTQtIamdJjMoEIJ1aF15hSZzZUd0gol3Ihc1b5IVojP9FtSUIhWRnkrdHwateX7SiH3TyeGlMy5D+5PnpFYj+eKUr/0O/n3ENHggOAotIbRCbvBiQVMS9eWbfjP5WD9EQKw67gy5tWdv/0+5t4Ldcq62DTwohNBW8jd6HHTRCXYNI2++bveDqqWDaL1KluIpLv2sFFqCPnENCWCA42NzQQa+Ox4v1E9BLaTwuPBLhbtrEJ3GtVceLjQT4e0Pa6lr77M9BxC0vE2z7JoFWXTF2tYx7RbatpOfPG9671bqj98wJZVeVlDzuYtdEKfO3UBL8tweuxRl/p1qtOOri6Ma3kKTtVr3ZBXHlUaHBtj3s6iq9S9MOxdJkEOm/k+ju1wW8yIid4UvkblpDaqR8XC36CknRk/2hIrsNi04=
+  on:
+    tags: true
+    repo: isneezy/vue-selectize
 notification:
   email:
     recepients:
-      - vilanculoivan@gmail.com
+    - vilanculoivan@gmail.com
     on_success: change
     on_failure: always
