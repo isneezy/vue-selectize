@@ -1,7 +1,7 @@
 <template>
   <div id="app" style="max-width: 920px; margin: 0 auto">
-    <v-selectize :options="ex1Options"/>
-    <v-selectize :options="ex1Options" multiple/>
+    <v-selectize :options="ex1Options" />
+    <v-selectize :options="ex1Options" multiple />
   </div>
 </template>
 

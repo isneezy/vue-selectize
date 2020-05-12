@@ -1,123 +1,159 @@
 <template>
-    <div class="selectize-control" tabindex="0" :class="controlClassName"
-         v-on:focus="onFocus" v-click-outside="onBlur">
-        <div :class="inputClassName"
-             class="selectize-input items"
-             @click="onFocus" @keydown.tab="onBlur">
+  <div
+    class="selectize-control"
+    tabindex="0"
+    :class="controlClassName"
+    v-on:focus="onFocus"
+    v-click-outside="onBlur"
+  >
+    <div
+      :class="inputClassName"
+      class="selectize-input items"
+      @click="onFocus"
+      @keydown.tab="onBlur"
+    >
+      <div
+        :key="item[keyBy]"
+        v-for="item in selectedItems"
+        class="item"
+        :data-value="item[keyBy]"
+      >
+        <slot name="item" v-bind:item="item">{{ item[label] }}</slot>
+      </div>
 
-            <div :key="item[keyBy]" v-for="item in selectedItems" class="item" :data-value="item[keyBy]">
-                <slot name="item" v-bind:item="item">{{ item[label] }}</slot>
-            </div>
-
-            <input @input="onSearch" ref="input" :value="searchText" :disabled="disabled"
-                   :placeholder="computedPlaceholder" autocomplete="off" tabindex="-1"
-                   :style="inputStyle"
-                   @keyup.up="activatePrevious" @keyup.down="activateNext"
-                   @keyup.delete="popOption" @keyup.enter="selectActiveOption"/>
-        </div>
-        <div class="selectize-dropdown" :class="dropdownClassName" :style="dropdownStyle">
-            <div class="selectize-dropdown-content">
-                <div v-on:mouseover="activateOption(option)"
-                     data-selectable
-                     :key="option[keyBy]" v-for="option in filteredOptions"
-                     class="option"
-                     :class="getOptionClassName(option)"
-                     :data-value="option[keyBy]"
-                     @click="selectOption(option)">
-                    <slot name="option" v-bind:option="option">{{ option[label] }}</slot>
-                </div>
-
-                <div v-if="!filteredOptions.length && searchText.length && typeof createItem === 'function'"
-                     class="option create active"
-                     @click="selectActiveOption"
-                     data-selectable>
-                    <slot name="create-item" v-bind:text="searchText">Add <strong>{{ searchText }}</strong></slot>
-                </div>
-            </div>
-        </div>
-        <div class="spinner">
-          <slot name="spinner">
-            <span class="spinner_bg"></span>
-          </slot>
-        </div>
+      <input
+        @input="onSearch"
+        ref="input"
+        :value="searchText"
+        :disabled="disabled"
+        :placeholder="computedPlaceholder"
+        autocomplete="off"
+        tabindex="-1"
+        :style="inputStyle"
+        @keyup.up="activatePrevious"
+        @keyup.down="activateNext"
+        @keyup.delete="popOption"
+        @keyup.enter="selectActiveOption"
+      />
     </div>
+    <div
+      class="selectize-dropdown"
+      :class="dropdownClassName"
+      :style="dropdownStyle"
+    >
+      <div class="selectize-dropdown-content">
+        <div
+          v-on:mouseover="activateOption(option)"
+          data-selectable
+          :key="option[keyBy]"
+          v-for="option in filteredOptions"
+          class="option"
+          :class="getOptionClassName(option)"
+          :data-value="option[keyBy]"
+          @click="selectOption(option)"
+        >
+          <slot name="option" v-bind:option="option">{{ option[label] }}</slot>
+        </div>
+
+        <div
+          v-if="
+            !filteredOptions.length &&
+              searchText.length &&
+              typeof createItem === 'function'
+          "
+          class="option create active"
+          @click="selectActiveOption"
+          data-selectable
+        >
+          <slot name="create-item" v-bind:text="searchText"
+            >Add <strong>{{ searchText }}</strong></slot
+          >
+        </div>
+      </div>
+    </div>
+    <div class="spinner">
+      <slot name="spinner">
+        <span class="spinner_bg"></span>
+      </slot>
+    </div>
+  </div>
 </template>
 
 <script>
 import Fuse from 'fuse.js'
 import ClickOutside from 'vue-click-outside'
-import ArrayDiference from 'lodash.difference'
-import {isPromise} from './utils.js'
+import ArrayDifference from 'lodash.difference'
+import { isPromise } from './utils.js'
 export default {
   name: 'v-selectize',
   props: {
     /**
      * Allows multiple selection if true
      */
-    multiple: {default: false, type: Boolean},
+    multiple: { default: false, type: Boolean },
 
     /**
      * Input placeholder
      */
-    placeholder: {default: '', type: String},
+    placeholder: { default: '', type: String },
 
     /**
      * Array of selectable options
      */
-    options: {default: () => ([]), type: Array},
+    options: { default: () => [], type: Array },
 
     /**
      * Selectable option identifier key
      */
-    keyBy: {default: 'id', type: String},
+    keyBy: { default: 'id', type: String },
 
     /**
      * Option label key
      */
-    label: {default: 'label', type: String},
+    label: { default: 'label', type: String },
 
     /**
      * Keys used during search and sorting options
      */
-    keys: {default: () => (['label'])},
+    keys: { default: () => ['label'] },
 
     /**
      * The value of the component
      */
-    value: {default: null, type: [Array, Object, String, Number]},
+    value: { default: null, type: [Array, Object, String, Number] },
 
     /**
      * The limit/max of options to show in dropdown
      */
-    limit: {default: 0, type: [Number]},
+    limit: { default: 0, type: [Number] },
 
     /**
      * Allows input to be disabled and hides dropdown options
      */
-    disabled: {default: false, type: Boolean},
+    disabled: { default: false, type: Boolean },
 
     /**
      * Allows disable the built in search engine
      */
-    disableSearch: {default: false, type: Boolean},
+    disableSearch: { default: false, type: Boolean },
 
     /**
      * Function to be called when user creates new option
      * Set to false to disable new option creation
      */
     createItem: {
-      default: function (text) {
+      default: function(text) {
         return Promise.resolve(text)
       },
       type: [Function, Boolean]
     },
 
-    searchFn: {default: false, type: [Boolean, Function]},
+    searchFn: { default: false, type: [Boolean, Function] },
 
     /**
      * Selectize theme
      */
-    theme: {default: '', type: String}
+    theme: { default: '', type: String }
   },
 
   data: () => ({
@@ -129,13 +165,13 @@ export default {
     busy: false
   }),
 
-  mounted () {
+  mounted() {
     this.setSelectedValue(this.value)
     this.updateInputWidth()
   },
 
   computed: {
-    computedPlaceholder () {
+    computedPlaceholder() {
       return this.selectedItems.length ? '' : this.placeholder
     },
 
@@ -143,8 +179,8 @@ export default {
      * Internally formatted selected options
      * @returns {any[]}
      */
-    selectedItems () {
-      return this.selected.map(item => {
+    selectedItems() {
+      return this.selected.map((item) => {
         return this.formatOption(item)
       })
     },
@@ -152,8 +188,11 @@ export default {
     /**
      * Internally formatted selectable options
      */
-    formattedOptions () {
-      const options = this.hasFocus && !this.multiple ? this.options : ArrayDiference(this.options, this.selected)
+    formattedOptions() {
+      const options =
+        this.hasFocus && !this.multiple
+          ? this.options
+          : ArrayDifference(this.options, this.selected)
       return options.map((option) => {
         return this.formatOption(option)
       })
@@ -163,7 +202,7 @@ export default {
      * returns options filtered and sorted
      * @returns {any}
      */
-    filteredOptions () {
+    filteredOptions() {
       const fuse = new Fuse(this.formattedOptions, {
         shouldSort: true,
         threshold: 0.2,
@@ -173,7 +212,10 @@ export default {
         minMatchCharLength: 1,
         keys: this.keys
       })
-      const options = this.searchText.length && !this.disableSearch ? fuse.search(this.searchText) : this.formattedOptions
+      const options =
+        this.searchText.length && !this.disableSearch
+          ? fuse.search(this.searchText)
+          : this.formattedOptions
       return this.limit > 0 ? options.slice(0, this.limit) : options
     },
 
@@ -181,24 +223,29 @@ export default {
      * return the calculated active option
      * @returns {null}
      */
-    activeOption () {
-      let option = this.filteredOptions.find(option => option[this.keyBy] === this.activeOptionKey)
-      if (!option) return this.filteredOptions.length ? this.filteredOptions[0] : null
+    activeOption() {
+      let option = this.filteredOptions.find(
+        (option) => option[this.keyBy] === this.activeOptionKey
+      )
+      if (!option)
+        return this.filteredOptions.length ? this.filteredOptions[0] : null
       return option
     },
 
     /**
      * returns the calculated active option index relative to filtered option
      */
-    activeOptionIndex () {
-      return this.filteredOptions.findIndex(option => option[this.keyBy] === this.activeOptionKey)
+    activeOptionIndex() {
+      return this.filteredOptions.findIndex(
+        (option) => option[this.keyBy] === this.activeOptionKey
+      )
     },
 
     /**
      * returns true if this component has available options to show
      * @returns {boolean}
      */
-    hasOptions () {
+    hasOptions() {
       return !!this.options.length
     },
 
@@ -207,7 +254,7 @@ export default {
      * returns true if the selected options reached the maximum selectable number of option
      * @returns {boolean}
      */
-    isFull () {
+    isFull() {
       return false
     },
 
@@ -215,7 +262,7 @@ export default {
      * returns the classes to the .selectize-control element
      * @returns {{}}
      */
-    controlClassName () {
+    controlClassName() {
       const className = {}
       className[this.theme] = true
       className['multi'] = this.multiple
@@ -228,7 +275,7 @@ export default {
      * returns the classes to the .selectize-input element
      * @returns {{}}
      */
-    inputClassName () {
+    inputClassName() {
       const className = {}
       className['focus'] = this.hasFocus
       className['input-active'] = this.hasFocus
@@ -243,7 +290,7 @@ export default {
      * returns the style for the input element
      * @returns {{}}
      */
-    inputStyle () {
+    inputStyle() {
       // width: 4px; opacity: 1; position: relative; left: 0px;
       const style = {}
       style['width'] = `${this.inputWidth}px`
@@ -257,7 +304,7 @@ export default {
      * return classes for the .selectize-dropdown element
      * @returns {{}}
      */
-    dropdownClassName () {
+    dropdownClassName() {
       const className = {}
       className[this.theme] = true
       className['multi'] = this.multiple
@@ -269,12 +316,14 @@ export default {
      * returns the style for the .selectize-dropdown element
      * @returns {{}}
      */
-    dropdownStyle () {
+    dropdownStyle() {
       const style = {}
-      style['display'] = this.hasFocus && (
-        this.filteredOptions.length ||
-        (this.searchText.length && typeof this.createItem === 'function')
-      ) ? 'block' : 'none'
+      style['display'] =
+        this.hasFocus &&
+        (this.filteredOptions.length ||
+          (this.searchText.length && typeof this.createItem === 'function'))
+          ? 'block'
+          : 'none'
       style['width'] = `100%`
       return style
     }
@@ -284,7 +333,7 @@ export default {
     /**
      * Action performed when component is focused
      */
-    onFocus () {
+    onFocus() {
       if (!this.disabled) {
         this.hasFocus = !this.disabled
         this.$refs.input.focus()
@@ -294,7 +343,7 @@ export default {
     /**
      * Action performed when component looses focus
      */
-    onBlur () {
+    onBlur() {
       this.activeOptionKey = ''
       this.searchText = ''
       this.updateInputWidth()
@@ -306,7 +355,7 @@ export default {
      * Action performed when user types into the input element
      * @param e
      */
-    onSearch (e) {
+    onSearch(e) {
       if (this.selected.length && !this.multiple) {
         e.target.value = this.searchText
         return
@@ -325,7 +374,7 @@ export default {
      * @param option
      * @returns {*}
      */
-    formatOption (option) {
+    formatOption(option) {
       if (typeof option !== 'object') {
         const item = {}
         item['formatted'] = true
@@ -340,8 +389,8 @@ export default {
      * Calculates and updates the input element width
      * to fit the searched text or the placeholder
      */
-    updateInputWidth () {
-      this.canvas = (this.canvas || document.createElement('div'))
+    updateInputWidth() {
+      this.canvas = this.canvas || document.createElement('div')
       this.canvas.style.visibility = 'hidden'
       this.canvas.style.position = 'absolute'
       if (this.$el) {
@@ -363,7 +412,7 @@ export default {
      * Activates a selectable option
      * @param option
      */
-    activateOption (option) {
+    activateOption(option) {
       this.activeOptionKey = option[this.keyBy]
     },
 
@@ -371,7 +420,7 @@ export default {
      * Activates previous option if available
      * this is relative to filtered option
      */
-    activatePrevious () {
+    activatePrevious() {
       if (this.activeOptionIndex > 0 && this.filteredOptions.length) {
         this.activateOption(this.filteredOptions[this.activeOptionIndex - 1])
       }
@@ -381,7 +430,7 @@ export default {
      * Activates the next option if available
      * this is relative to filtered computed options
      */
-    activateNext () {
+    activateNext() {
       if (this.filteredOptions.length - 1 > this.activeOptionIndex) {
         this.activateOption(this.filteredOptions[this.activeOptionIndex + 1])
       }
@@ -392,7 +441,7 @@ export default {
      * @param option
      * @returns {{}}
      */
-    getOptionClassName (option) {
+    getOptionClassName(option) {
       const className = {}
       className['active'] = option[this.keyBy] === this.activeOption[this.keyBy]
       return className
@@ -402,7 +451,7 @@ export default {
      * Selects an option and emits input evant to the parent component
      * @param option
      */
-    selectOption (option) {
+    selectOption(option) {
       if (!option) return
       if (this.multiple) {
         this.onFocus()
@@ -423,20 +472,25 @@ export default {
     /**
      * Select an active option
      */
-    selectActiveOption () {
+    selectActiveOption() {
       this.setBusy()
       if (this.activeOption) this.selectOption(this.activeOption)
-      else if (typeof this.createItem === 'function' && this.searchText.length) {
+      else if (
+        typeof this.createItem === 'function' &&
+        this.searchText.length
+      ) {
         const option = this.createItem(this.searchText)
         if (isPromise(option)) {
-          option.then((o) => {
-            this.selectOption(this.formatOption(o))
-            this.searchText = ''
-            this.setNotBusy()
-          }).catch(e => {
-            this.setNotBusy()
-            return Promise.reject(e)
-          })
+          option
+            .then((o) => {
+              this.selectOption(this.formatOption(o))
+              this.searchText = ''
+              this.setNotBusy()
+            })
+            .catch((e) => {
+              this.setNotBusy()
+              return Promise.reject(e)
+            })
         } else {
           this.selectOption(this.formatOption(option))
           this.searchText = ''
@@ -448,8 +502,9 @@ export default {
     /**
      * Removes the last selected option
      */
-    popOption () {
-      this.deleteOnNextCall = this.deleteOnNextCall === 0 ? -1 : this.searchText.length
+    popOption() {
+      this.deleteOnNextCall =
+        this.deleteOnNextCall === 0 ? -1 : this.searchText.length
       if (this.deleteOnNextCall === -1 || !this.multiple) {
         let option = this.selected.pop()
         if (typeof option === 'object' && option !== undefined) {
@@ -468,7 +523,7 @@ export default {
      * the whole selected array of data if multiple otherwise
      * the first element of the selected array or null
      */
-    emitInput () {
+    emitInput() {
       if (this.multiple) {
         this.$emit('input', this.selected)
       } else {
@@ -480,7 +535,7 @@ export default {
      * Correctly sets the component internal mutable value
      * @param value
      */
-    setSelectedValue (value) {
+    setSelectedValue(value) {
       if (Array.isArray(value)) {
         this.selected = value.slice()
       } else if (value) {
@@ -490,56 +545,54 @@ export default {
       }
     },
 
-    onAjaxStart () {
+    onAjaxStart() {
       this.setBusy()
     },
-    onAjaxDone () {
+    onAjaxDone() {
       this.setNotBusy()
     },
-    setBusy () {
+    setBusy() {
       this.busy = true
     },
-    setNotBusy () {
+    setNotBusy() {
       this.busy = false
     }
   },
 
   watch: {
     value: {
-      handler (value) {
+      handler(value) {
         this.setSelectedValue(value)
       },
       deep: true
     }
   },
-  directives: {ClickOutside}
+  directives: { ClickOutside }
 }
 </script>
 
 <style scoped>
 .spinner {
-    transition: opacity 0.2s;
-    z-index: 2;
-    position: absolute;
-    top: 50%;
-    right: 34px;
-    width: 16px;
-    height: 16px;
-    margin: -8px 0 0 0;
-    opacity: 0;
+  transition: opacity 0.2s;
+  z-index: 2;
+  position: absolute;
+  top: 50%;
+  right: 34px;
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 0;
+  opacity: 0;
 }
 
 .spinner .spinner_bg {
-    background: url(../assets/images/spinner.gif);
-    background-size: 16px 16px;
-    display: block;
-    position: relative;
-    width: 100%;
-    height: 100%;
-
+  background: url(../assets/images/spinner.gif);
+  background-size: 16px 16px;
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 .loading .spinner {
   opacity: 1;
 }
-
 </style>
