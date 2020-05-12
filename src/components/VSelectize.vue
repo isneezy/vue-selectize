@@ -397,7 +397,7 @@ export default {
         this.$el.appendChild(this.canvas)
       }
 
-      this.canvas.innerText = this.selected.length
+      this.canvas.innerText = this.searchText.length
         ? this.searchText
         : this.placeholder
 
