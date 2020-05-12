@@ -17,6 +17,6 @@ yarn-error.log*
 *.ntvs*
 *.njsproj
 *.sln
-*.sw*
+*.sw?
 
 docs/\.vuepress/dist/

@@ -6,9 +6,8 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 import VSelectize from './components/VSelectize'
-import '/selectize/dist/css/selectize.default.css'
+import 'selectize/dist/css/selectize.default.css'
 
 export default {
   name: 'app',
@@ -16,8 +15,7 @@ export default {
     ex1Options: ['awesome', 'neat']
   }),
   components: {
-    VSelectize,
-    HelloWorld
+    VSelectize
   }
 }
 </script>

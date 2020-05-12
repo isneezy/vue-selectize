@@ -32,29 +32,26 @@
     "postversion": "git push --tags && npm publish && git push && echo \"Successfully released version $npm_package_version!\""
   },
   "dependencies": {
-    "fuse.js": "^3.2.1",
+    "core-js": "^3.6.4",
+    "fuse.js": "^5.2.3",
     "lodash.difference": "^4.5.0",
-    "vue": "^2.5.16",
-    "vue-click-outside": "^1.0.7"
+    "vue": "^2.6.11",
+    "vue-click-outside": "^1.1.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.0.0-beta.15",
-    "@vue/cli-plugin-eslint": "^3.0.0-beta.15",
-    "@vue/cli-service": "^3.0.0-beta.15",
-    "@vue/eslint-config-standard": "^3.0.0-rc.3",
-    "lint-staged": "^6.0.0",
-    "lodash.debounce": "^4.0.8",
-    "sass-loader": "^7.1.0",
-    "selectize": "^0.12.6",
-    "vue-template-compiler": "^2.5.16",
-    "vuepress": "^0.12.0"
+    "@vue/cli-plugin-babel": "~4.3.0",
+    "@vue/cli-plugin-eslint": "~4.3.0",
+    "@vue/cli-service": "~4.3.0",
+    "@vue/eslint-config-prettier": "^6.0.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-vue": "^6.2.2",
+    "prettier": "^1.19.1",
+    "vue-template-compiler": "^2.6.11",
+    "vuepress": "^1.5.0"
   },
   "peerDependencies": {
-    "selectize": "^0.12.5"
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
-  ]
+    "selectize": "^0.12.6"
+  }
 }
