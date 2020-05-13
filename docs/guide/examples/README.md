@@ -46,10 +46,13 @@ This example shows how to integrate third-party data from the GitHub API.
 <<< @/docs/.vuepress/components/RemoteGitHub.vue
 
 ## Remote Source — Rotten Tomatoes
+<RemoteRottenTomatoes/>
 This demo shows how to integrate third-party
 data from the Rotten Tomatoes API. Try searching for "Iron Man".
 Note: if this doesn't work, it's because the API limit has been reached...
 try again later :smile:
+
+<<< @/docs/.vuepress/components/RemoteRottenTomatoes.vue
 
 <style lang='scss'>
 @import('https://cdn.jsdelivr.net/npm/selectize@0.12.6/dist/css/selectize.default.css')
