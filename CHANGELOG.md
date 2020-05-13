@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - prettier 
 ### Changed
 - Updated dependencies (vue-cli v4)
+- Updated documentation and examples
 
 ## [0.5.0]
 ### Added
