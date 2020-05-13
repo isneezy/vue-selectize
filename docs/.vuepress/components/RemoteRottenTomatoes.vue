@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>Movie:</div>
+    <div class="my-2">Movie:</div>
     <VSelectize :options="movies" :searchFn="search" v-model="selected" disableSearch key-by="id" label="title" :create-item="false">
       <template v-slot:option="{ option }">
         <div class="flex overflow-hidden">
@@ -31,6 +31,7 @@
         </div>
       </template>
     </VSelectize>
+    <div class="py-2">Current vaue: "{{ selected ? selected.title : null }}"</div>
   </div>
 </template>
 

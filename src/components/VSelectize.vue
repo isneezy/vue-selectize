@@ -66,7 +66,7 @@
           data-selectable
         >
           <slot name="create-item" v-bind:text="searchText"
-            >Add <strong>{{ searchText }}</strong></slot
+            >Add <strong>{{ searchText }}...</strong></slot
           >
         </div>
       </div>
