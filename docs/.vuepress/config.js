@@ -5,7 +5,9 @@ module.exports = {
   // base: '/vue-selectize/',
   ga: 'UA-105706124-2',
   head: [
-    ['link', { rel: 'stylesheet', type: 'text/css', href: 'https://cdn.jsdelivr.net/npm/selectize@0.12.6/dist/css/selectize.default.css' }]
+    ['link', { rel: 'stylesheet', type: 'text/css', href: 'https://cdn.jsdelivr.net/npm/selectize@0.12.6/dist/css/selectize.default.css' }],
+    ['link', { rel: 'stylesheet', type: 'text/css', href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' }],
+    ['link', { rel: 'stylesheet', type: 'text/css', href: 'https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css' }]
   ],
   themeConfig: {
     repo: 'isneezy/vue-selectize',
