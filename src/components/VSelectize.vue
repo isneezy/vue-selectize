@@ -214,7 +214,7 @@ export default {
       })
       const options =
         this.searchText.length && !this.disableSearch
-          ? fuse.search(this.searchText)
+          ? fuse.search(this.searchText).map(r => r.item)
           : this.formattedOptions
       return this.limit > 0 ? options.slice(0, this.limit) : options
     },
