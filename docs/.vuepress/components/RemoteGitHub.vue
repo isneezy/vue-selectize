@@ -50,10 +50,10 @@ export default {
       fetch(`https://api.github.com/legacy/repos/search/${text}`).then(response => {
         return response.json()
       }).then(data => {
-        this.options = data['repositories'] || []
+        this.options = data.repositories || []
         done()
-      })
-    }, 300)
+      }).catch(done)
+    }, 500)
   },
   components: {VSelectize}
 }
