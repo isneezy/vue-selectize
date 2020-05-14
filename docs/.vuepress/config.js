@@ -25,8 +25,14 @@ module.exports = {
         collapsable: false,
         children: [
           '/guide/',
-          '/guide/examples/',
-          '/guide/api/',
+          '/guide/examples/'
+        ]
+      },
+      {
+        title: 'API',
+        collapsable: false,
+        children: [
+          '/api/props'
         ]
       }
     ]
