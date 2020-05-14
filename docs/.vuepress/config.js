@@ -32,7 +32,8 @@ module.exports = {
         title: 'API',
         collapsable: false,
         children: [
-          '/api/props'
+          '/api/props',
+          '/api/slots'
         ]
       }
     ]
