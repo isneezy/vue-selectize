@@ -12,7 +12,8 @@ actionLink: /guide/
 Installation
 
 ```bash
-npm install @isneezy/vue-selectize --save
-# OR
+# With npm package manager
+npm install selectize @isneezy/vue-selectize --save
+# OR with yarn package manager
 yarn add selectize @isneezy/vue-selectize
 ```
