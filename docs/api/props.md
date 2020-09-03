@@ -22,8 +22,8 @@ placeholder: { default: '', type: String },
 
 An array of strings or objects to be used as dropdown choices.
 If you are using an array of objects, vue-selectize will look for a `id` and `label` key  
-Ex. `[{id: 'MZ', label: 'Mozambique'}]`
-A custom label key can be set with the `label` prop.
+Ex. `[{id: 'MZ', label: 'Mozambique'}]`    
+A custom label key can be set with the [label](#label) prop.
 
 ```js
 options: { default: () => [], type: Array },
@@ -31,7 +31,7 @@ options: { default: () => [], type: Array },
 
 ## keyBy
 
-Selectable option unique identifier key, ech option must have a unique identifier.
+Selectable option unique identifier key, each option must have a unique identifier.
 Use this prop to change the default behavior
 
 ```js

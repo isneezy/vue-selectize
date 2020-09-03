@@ -12,11 +12,24 @@ VueSelectize leverages scoped slots to allow for total customization of the pres
 Slots can be used to change the look and feel of the UI, or to simply swap out text.
 </tip>
 
-## item
+## item  
+
+The text displayed to represent each selected item.
+- `item {Object|String}` - A selected option
+
+<ItemSlot />
+
+<<< @/docs/.vuepress/components/ItemSlot.vue
+
 ## option
 
-The current option within the dropdown, contained within `<div>`.  
+The option within the dropdown.
+- `option {Object}` - The currently isolated option from `filteredOptions`
 
-## create-item <Badge text="v0.5.0" type="warning" />
+<OptionSlot />
 
+<<< @/docs/.vuepress/components/OptionSlot.vue
+  
+
+## create-item
 ## spinner
