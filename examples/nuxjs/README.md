@@ -1,3 +1,3 @@
 # Vue Selectize example with Nuxt.js
 
-https://nuxtjs.org/examples
+https://vue-selectize.vilanculo.me/guide/examples/#nuxt-js-integration
