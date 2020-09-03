@@ -9,7 +9,7 @@ Package installation
 
 ```bash
 # With npm package manager
-npm install @isneezy/vue-selectize --save
+npm install selectize @isneezy/vue-selectize --save
 # OR with yarn package manager
 yarn add selectize @isneezy/vue-selectize
 ```
@@ -21,6 +21,7 @@ component globally available
 
 ```js
 import Vue from 'vue'
+import 'selectize/dist/css/selectize.default.css' // This is required, we use the same css as selectize.js
 import VSelectize from '@isneezy/vue-selectize'
 Vue.component('v-selectize', VSelectize)
 ```
@@ -31,6 +32,7 @@ in which it will be used
 ```js
 // Vue SFC Example
 // MyComponent.vue
+import 'selectize/dist/css/selectize.default.css' // This is required, we use the same css as selectize.js
 import VSelectize from '@isneezy/vue-selectize'
 export default {
   data: () => ({
