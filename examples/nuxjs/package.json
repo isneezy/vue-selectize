@@ -1,0 +1,14 @@
+{
+  "name": "nuxtjs-example",
+  "version": "1.0.0",
+  "license": "MIT",
+  "dependencies": {
+    "@isneezy/vue-selectize": "^0.6.0",
+    "nuxt": "^2.14.4"
+  },
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "post-update": "yarn upgrade --latest"
+  }
+}
