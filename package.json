@@ -39,7 +39,7 @@
     "vue-click-outside": "^1.1.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.3.0",
+    "@vue/cli-plugin-babel": "~4.5.4",
     "@vue/cli-plugin-eslint": "~4.3.0",
     "@vue/cli-service": "~4.5.4",
     "@vue/eslint-config-prettier": "^6.0.0",
