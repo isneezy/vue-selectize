@@ -116,7 +116,11 @@ export default {
     /**
      * Keys used during search and sorting options
      */
-    keys: { default: () => ['label'] },
+    keys: {
+      default() {
+        return [this.label, this.keyBy]
+      },
+    },
 
     /**
      * The value of the component

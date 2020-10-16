@@ -53,7 +53,11 @@ vue-selectize internaly uses fuse.js to perform its search capabilities, this pr
 witch keys to use for searching.
 
 ```js
-keys: { default: () => ['label'] },
+keys: {
+  default() {
+    return [this.label, this.keyBy]
+  },
+},
 ```
 
 ## value
