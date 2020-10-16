@@ -5,6 +5,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Fixed
+- To reduce verbosity `keys` prop now uses `[this.label, this.keyBy]` as default value.
+### Security
+- We have updated a lot of our dependencies.
 
 ## [0.6.0]
 ### Fixed
@@ -50,7 +54,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - `.form-control` class [#3](https://github.com/isneezy/vue-selectize/issues/3)
 
 ### Fixed
-- This dependency was not found (possible fix) [#5](https://github.com/isneezy/vue-selectize/issues/5)
+- This dependency where not found (possible fix) [#5](https://github.com/isneezy/vue-selectize/issues/5)
 - Some styles issues
 
 ## [0.2.0] - 2017-07-17
