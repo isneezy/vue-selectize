@@ -81,7 +81,7 @@
 </template>
 
 <script>
-import Fuse from 'fuse.js'
+import Fuse from 'fuse.js/dist/fuse.basic'
 import ClickOutside from 'vue-click-outside'
 import ArrayDifference from 'lodash.difference'
 import { isPromise } from './utils.js'
