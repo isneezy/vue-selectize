@@ -35,7 +35,7 @@
     "core-js": "^3.6.4",
     "fuse.js": "^5.2.3",
     "lodash.difference": "^4.5.0",
-    "vue": "^2.6.11",
+    "vue": "^2.6.12",
     "vue-click-outside": "^1.1.0"
   },
   "devDependencies": {
@@ -48,7 +48,7 @@
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-vue": "^7.0.1",
     "prettier": "^2.1.1",
-    "vue-template-compiler": "^2.6.11",
+    "vue-template-compiler": "^2.6.12",
     "vuepress": "^1.5.0"
   },
   "peerDependencies": {
