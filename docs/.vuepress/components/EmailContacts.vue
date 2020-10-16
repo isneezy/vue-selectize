@@ -3,7 +3,7 @@
         <div>Email:</div>
         <v-selectize :options="options" @search="text = $event" v-model="selected" :create-item="maybeCreate()" multiple placeholder="Pick some people..." keyBy="email"
                      label="name"
-                     keys="['name', 'email']">
+                     :keys="['name', 'email']">
             <template slot="item" slot-scope="{item}">{{item.name}} <{{item.email}}></template>
             <template slot="option" slot-scope="{option}">
                 <label>{{ option.name }}</label>

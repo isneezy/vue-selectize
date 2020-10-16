@@ -81,7 +81,7 @@
 </template>
 
 <script>
-import Fuse from 'fuse.js'
+import Fuse from 'fuse.js/dist/fuse.basic'
 import ClickOutside from 'vue-click-outside'
 import ArrayDifference from 'lodash.difference'
 import { isPromise } from './utils.js'
@@ -116,7 +116,11 @@ export default {
     /**
      * Keys used during search and sorting options
      */
-    keys: { default: () => ['label'] },
+    keys: {
+      default() {
+        return [this.label, this.keyBy]
+      },
+    },
 
     /**
      * The value of the component
@@ -205,13 +209,9 @@ export default {
      */
     filteredOptions() {
       const fuse = new Fuse(this.formattedOptions, {
-        shouldSort: true,
+        includeScore: true,
         threshold: 0.2,
-        location: 0,
-        distance: 100,
-        maxPatternLength: 32,
-        minMatchCharLength: 1,
-        keys: this.keys,
+        keys: Array.from(this.keys),
       })
       const options =
         this.searchText.length && !this.disableSearch

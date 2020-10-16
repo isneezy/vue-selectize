@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "core-js": "^3.6.4",
-    "fuse.js": "^5.2.3",
+    "fuse.js": "^6.4.1",
     "lodash.difference": "^4.5.0",
     "vue": "^2.6.12",
     "vue-click-outside": "^1.1.0"
