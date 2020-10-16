@@ -12,10 +12,10 @@ import 'selectize/dist/css/selectize.default.css'
 export default {
   name: 'app',
   data: () => ({
-    ex1Options: ['awesome', 'neat']
+    ex1Options: ['awesome', 'neat'],
   }),
   components: {
-    VSelectize
-  }
+    VSelectize,
+  },
 }
 </script>

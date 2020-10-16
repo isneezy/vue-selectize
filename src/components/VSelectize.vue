@@ -58,8 +58,8 @@
         <div
           v-if="
             !filteredOptions.length &&
-              searchText.length &&
-              typeof createItem === 'function'
+            searchText.length &&
+            typeof createItem === 'function'
           "
           class="option create active"
           @click="selectActiveOption"
@@ -147,10 +147,10 @@ export default {
      * Set to false to disable new option creation
      */
     createItem: {
-      default: function(text) {
+      default: function (text) {
         return Promise.resolve(text)
       },
-      type: [Function, Boolean]
+      type: [Function, Boolean],
     },
 
     searchFn: { default: false, type: [Boolean, Function] },
@@ -158,7 +158,7 @@ export default {
     /**
      * Selectize theme
      */
-    theme: { default: '', type: String }
+    theme: { default: '', type: String },
   },
 
   data: () => ({
@@ -167,7 +167,7 @@ export default {
     searchText: '',
     activeOptionKey: '',
     selected: [],
-    busy: false
+    busy: false,
   }),
 
   mounted() {
@@ -327,7 +327,7 @@ export default {
           : 'none'
       style['width'] = `100%`
       return style
-    }
+    },
   },
 
   methods: {
@@ -557,7 +557,7 @@ export default {
     },
     setNotBusy() {
       this.busy = false
-    }
+    },
   },
 
   watch: {
@@ -565,10 +565,10 @@ export default {
       handler(value) {
         this.setSelectedValue(value)
       },
-      deep: true
-    }
+      deep: true,
+    },
   },
-  directives: { ClickOutside }
+  directives: { ClickOutside },
 }
 </script>
 
