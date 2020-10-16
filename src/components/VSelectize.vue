@@ -209,13 +209,9 @@ export default {
      */
     filteredOptions() {
       const fuse = new Fuse(this.formattedOptions, {
-        shouldSort: true,
+        includeScore: true,
         threshold: 0.2,
-        location: 0,
-        distance: 100,
-        maxPatternLength: 32,
-        minMatchCharLength: 1,
-        keys: this.keys
+        keys: Array.from(this.keys),
       })
       const options =
         this.searchText.length && !this.disableSearch
