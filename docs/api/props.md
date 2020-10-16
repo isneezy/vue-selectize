@@ -4,7 +4,7 @@ title: Props
 
 ## multiple
 
-Equivalent to the multiple attribute on a `<select>` input.
+Equivalent to the `multiple` attribute on a `<select>` input.
 
 ```js
 multiple: { default: false, type: Boolean },
@@ -12,7 +12,7 @@ multiple: { default: false, type: Boolean },
 
 ## placeholder
 
-Equivalent to the placeholder attribute on a `<input>` input.
+Equivalent to the placeholder attribute on an `<input>` input.
 
 ```js
 placeholder: { default: '', type: String },
@@ -21,7 +21,7 @@ placeholder: { default: '', type: String },
 ## options
 
 An array of strings or objects to be used as dropdown choices.
-If you are using an array of objects, vue-selectize will look for a `id` and `label` key  
+If you are using an array of objects, vue-selectize will look for an `id` and `label` key  
 Ex. `[{id: 'MZ', label: 'Mozambique'}]`    
 A custom label key can be set with the [label](#label) prop.
 
@@ -49,8 +49,7 @@ label: { default: 'label', type: String },
 
 ## keys
 
-vue-selectize internaly uses fuse.js to perform its search capabilities, this props tells
-witch keys to use for searching.
+vue-selectize internally uses [fuse.js](https://fusejs.io/examples.html#search-object-array) to perform its search capabilities, this props tell witch keys to use for searching.
 
 ```js
 keys: {
@@ -62,8 +61,8 @@ keys: {
 
 ## value
 
-Contains the currently selected value. Very similar to a value attribute on an `<input>`. You can listen for changes
-using `input` event using v-on
+Contains the currently selected value. Very similar to a value attribute on an `<input>`.  
+You can listen for changes using `input` event using v-on.
 
 ```js
 value: { default: null, type: [Array, Object, String, Number] },
@@ -87,7 +86,7 @@ disabled: { default: false, type: Boolean },
 
 ## disableSearch
 
-Disable the built in search engine
+Disable the built-in search engine
 
 ```js
 disableSearch: { default: false, type: Boolean },
@@ -95,7 +94,7 @@ disableSearch: { default: false, type: Boolean },
 
 ## createItem
 
-User defined function for adding Options. Set to false to disable adding option
+User-defined function for adding Options. Set to false to disable adding an option
 
 ```js
 createItem: {
@@ -108,7 +107,7 @@ createItem: {
 
 ## searchFn
 
-User defined function for searching
+User-defined function for searching
 
 ```js
 searchFn: { default: false, type: [Boolean, Function] },
@@ -121,5 +120,3 @@ Selectize.js theme
 ```js
 theme: { default: '', type: String }
 ```
-
-

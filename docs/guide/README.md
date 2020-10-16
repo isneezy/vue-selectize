@@ -26,7 +26,7 @@ import VSelectize from '@isneezy/vue-selectize'
 Vue.component('v-selectize', VSelectize)
 ```
 
-Alternatively it is possible to import vue-selectize directly to components
+Alternatively, it is possible to import vue-selectize directly to components
 in which it will be used
 
 ```js
