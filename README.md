@@ -1,7 +1,7 @@
 # vue-selectize
 [![Netlify Status](https://api.netlify.com/api/v1/badges/613ef38b-8369-42fa-a744-60856cd37b18/deploy-status)](https://app.netlify.com/sites/vue-selectize/deploys)
 
-> A Vanila Vue.js component that mimics the selectize behaviour
+> A Vanilla Vue.js component that mimics the selectize.js behavior
 https://vue-selectize.vilanculo.me
 
 ## Installation

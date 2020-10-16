@@ -14,7 +14,7 @@ Slots can be used to change the look and feel of the UI, or to simply swap out t
 
 ## item  
 
-The text displayed to represent each selected item.
+The text is displayed to represent each selected item.
 - `item {Object|String}` - A selected option
 
 <ItemSlot />
