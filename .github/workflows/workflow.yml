@@ -11,7 +11,7 @@ jobs:
       - run: yarn install --frozen-lockfile
       # - run: npm test
       - name: Release
-        if: ${{ github.ref == 'master' || github.ref == 'next' }}
+        # if: ${{ github.ref == 'master' || github.ref == 'next' }}
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx semantic-release
+        run: npx semantic-release -b semantic-release -d
