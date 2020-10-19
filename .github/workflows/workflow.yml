@@ -8,7 +8,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '12'
-      - run contains(github.ref, 'release')
+      - run: echo ${{ contains(github.ref, 'release') }}
       - run: yarn install --frozen-lockfile
       - run: yarn build
       - name: Release
