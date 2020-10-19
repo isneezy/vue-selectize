@@ -38,6 +38,7 @@
     "vue-click-outside": "^1.1.0"
   },
   "devDependencies": {
+    "@semantic-release/changelog": "^5.0.1",
     "@vue/cli-plugin-babel": "~4.5.4",
     "@vue/cli-plugin-eslint": "~4.5.7",
     "@vue/cli-service": "~4.5.4",
