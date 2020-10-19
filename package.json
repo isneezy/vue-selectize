@@ -1,6 +1,6 @@
 {
   "name": "@isneezy/vue-selectize",
-  "version": "0.6.1",
+  "version": "0.0.0-development",
   "description": "Vanila Vue.js component that mimics Selectize behaviour (no need jquery dependency) with extras",
   "keywords": [
     "Vue",
@@ -26,10 +26,9 @@
     "serve": "vuepress dev docs",
     "build:lib": "vue-cli-service build --target lib --name vue-selectize ./src/components/VSelectize.vue",
     "docs:build": "vuepress build docs",
+    "build": "yarn build:lib",
     "lint": "vue-cli-service lint",
-    "preversion": "yarn build:lib",
-    "version": "node version && git add .",
-    "postversion": "git push --tags && npm publish && git push && echo \"Successfully released version $npm_package_version!\""
+    "semantic-release": "semantic-release"
   },
   "dependencies": {
     "core-js": "^3.6.4",
@@ -39,6 +38,7 @@
     "vue-click-outside": "^1.1.0"
   },
   "devDependencies": {
+    "@semantic-release/changelog": "^5.0.1",
     "@vue/cli-plugin-babel": "~4.5.4",
     "@vue/cli-plugin-eslint": "~4.5.7",
     "@vue/cli-service": "~4.5.4",
@@ -48,6 +48,7 @@
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-vue": "^7.0.1",
     "prettier": "^2.1.1",
+    "semantic-release": "^17.2.1",
     "vue-template-compiler": "^2.6.12",
     "vuepress": "^1.5.0"
   },
