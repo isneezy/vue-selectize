@@ -9,9 +9,11 @@ jobs:
         with:
           node-version: '12'
       - run: yarn install --frozen-lockfile
-      # - run: npm test
+      - run: yarn build:docs
+      - run: yarn build
       - name: Release
         # if: ${{ github.ref == 'master' || github.ref == 'next' }}
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npx semantic-release -b semantic-release -d
