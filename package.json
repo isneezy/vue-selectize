@@ -26,7 +26,7 @@
     "serve": "vuepress dev docs",
     "build:lib": "vue-cli-service build --target lib --name vue-selectize ./src/components/VSelectize.vue",
     "docs:build": "vuepress build docs",
-    "build": "yarn docs:build && yarn build:lib",
+    "build": "yarn build:lib",
     "lint": "vue-cli-service lint",
     "semantic-release": "semantic-release"
   },
