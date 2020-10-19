@@ -9,7 +9,6 @@ jobs:
         with:
           node-version: '12'
       - run: yarn install --frozen-lockfile
-      - run: yarn build:docs
       - run: yarn build
       - name: Release
         # if: ${{ github.ref == 'master' || github.ref == 'next' }}
