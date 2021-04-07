@@ -31,7 +31,7 @@
         </div>
       </template>
     </VSelectize>
-    <div class="py-2">Current vaue: "{{ selected ? selected.title : null }}"</div>
+    <div class="py-2">Current value: "{{ selected ? selected.title : null }}"</div>
   </div>
 </template>
 
