@@ -10,7 +10,7 @@
       :class="inputClassName"
       class="selectize-input items"
       @click="onFocus"
-      @keydown.tab="onBlur"
+      @keydown.tab="selectActiveOption"
     >
       <div
         :key="item[keyBy]"
