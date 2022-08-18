@@ -338,6 +338,7 @@ export default {
       if (!this.disabled) {
         this.hasFocus = !this.disabled
         this.$refs.input.focus()
+        !this.multiple ? this.activeOptionKey = this.selected[0] : ''
       }
     },
 
