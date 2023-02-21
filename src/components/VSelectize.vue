@@ -512,7 +512,7 @@ export default {
           option = option[this.label]
         }
         if (this.multiple) {
-          this.searchText = option !== undefined ? option : ''
+          this.searchText = ''
         }
         this.emitInput()
         this.updateInputWidth()
