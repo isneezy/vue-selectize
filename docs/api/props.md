@@ -120,3 +120,11 @@ Selectize.js theme
 ```js
 theme: { default: '', type: String }
 ```
+
+## clearSearchText
+
+Allows component to delete whole option
+
+```js
+clearSearchText: { default: false, type: Boolean }
+```
