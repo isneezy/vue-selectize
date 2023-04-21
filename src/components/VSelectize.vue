@@ -159,6 +159,11 @@ export default {
      * Selectize theme
      */
     theme: { default: '', type: String },
+
+    /**
+     * Allows component to delete whole option
+     */
+    clearSearchText: { default: false, type: Boolean }
   },
 
   data: () => ({
@@ -511,9 +516,13 @@ export default {
         if (typeof option === 'object' && option !== undefined) {
           option = option[this.label]
         }
-        if (this.multiple) {
+
+        if (this.multiple && this.clearSearchText) {
+          this.searchText = ''
+        } else if(this.multiple) {
           this.searchText = option !== undefined ? option : ''
         }
+
         this.emitInput()
         this.updateInputWidth()
       }
